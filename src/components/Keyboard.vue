@@ -10,7 +10,6 @@
     <Key name="u" :current-key="currentKey"/>
     <Key name="i" :current-key="currentKey"/>
     <Key name="o" :current-key="currentKey"/>
-    <Key name="p" :current-key="currentKey"/>
   </div>
   <div class="keyboard__row keyboard__row--second">
     <Key name="a" :current-key="currentKey"/>
@@ -21,9 +20,9 @@
     <Key name="h" :current-key="currentKey"/>
     <Key name="j" :current-key="currentKey"/>
     <Key name="k" :current-key="currentKey"/>
-    <Key name="l" :current-key="currentKey"/>
   </div>
-  <div class="keyboard__row keyboard__row--third">
+  <div class="keyboard__row">
+    <Key name="p" :current-key="currentKey"/>
     <Key name="y" :current-key="currentKey"/>
     <Key name="x" :current-key="currentKey"/>
     <Key name="c" :current-key="currentKey"/>
@@ -31,6 +30,7 @@
     <Key name="b" :current-key="currentKey"/>
     <Key name="n" :current-key="currentKey"/>
     <Key name="m" :current-key="currentKey"/>
+    <Key name="l" :current-key="currentKey"/>
   </div>
 </div>
 
@@ -66,10 +66,6 @@ export default {
 
       &--second {
         margin-left 15px
-      }
-
-      &--third {
-        margin-left 40px
       }
     }
   }

@@ -23,7 +23,10 @@ export default {
   },
   methods: {
     keypress(event) {
+      console.log(event.key);
+      console.log(roll_1)
       this.pressedKey = roll_1.result(event.key);
+      console.log(this.pressedKey);
     },
     keyup() {
       this.pressedKey = '';

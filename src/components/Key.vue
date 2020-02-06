@@ -22,7 +22,6 @@ export default {
       return this.name;
     },
     isActive() {
-      console.log(this.currentKey,  this.key.toUpperCase() === this.currentKey.toUpperCase());
       return this.key.toUpperCase() === this.currentKey.toUpperCase();
     }
   }
