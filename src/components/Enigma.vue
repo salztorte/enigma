@@ -1,32 +1,36 @@
 <template>
 <div>
-  <GlobalEvents @keypress="keypress($event)" @keyup="keyup"/>
-  <h1>Enigma</h1>
+  <GlobalEvents @keypress="keypress($event)" @keyup="keyup" />
+<!--  <h1>Enigma</h1>-->
 
-  <Keyboard :current-key="pressedKey"></Keyboard>
+  <RollDisplay :indices="rollingMill.index" class="roll-display"/>
+
+<!--  <Keyboard :current-key="pressedKey"></Keyboard>-->
 </div>
 </template>
 
 <script>
-import Keyboard from './Keyboard'
-import {roll_1} from '../stuff/rolls'
+//import Keyboard from './Keyboard'
+import RollDisplay from './RollDisplay'
+import {RollingMill} from '../stuff/rolls'
 
 export default {
   name: "Enigma",
   components: {
-    Keyboard
+    //Keyboard,
+    RollDisplay,
   },
   data() {
     return {
       pressedKey: '',
+      test: 0,
+      rollingMill: new RollingMill(),
     }
   },
   methods: {
     keypress(event) {
-      console.log(event.key);
-      console.log(roll_1)
-      this.pressedKey = roll_1.result(event.key);
-      console.log(this.pressedKey);
+      this.rollingMill.next();
+      this.pressedKey = event.key;
     },
     keyup() {
       this.pressedKey = '';
@@ -36,7 +40,9 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-
+  .roll-display{
+    margin-bottom 30px;
+  }
 </style>
 
 
