@@ -9,6 +9,7 @@
 
 <script>
 import Keyboard from './Keyboard'
+import {roll_1} from '../stuff/rolls'
 
 export default {
   name: "Enigma",
@@ -22,7 +23,7 @@ export default {
   },
   methods: {
     keypress(event) {
-      this.pressedKey = event.key;
+      this.pressedKey = roll_1.result(event.key);
     },
     keyup() {
       this.pressedKey = '';
@@ -34,3 +35,7 @@ export default {
 <style scoped lang="stylus">
 
 </style>
+
+
+
+
