@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "ui": "vue ui"
   },
   "dependencies": {
     "core-js": "^3.4.4",
@@ -41,7 +42,9 @@
       "plugin:vue/essential",
       "@vue/prettier"
     ],
-    "rules": {},
+    "rules": {
+      "no-console" : "warn"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     },
