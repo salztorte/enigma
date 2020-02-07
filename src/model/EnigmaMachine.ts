@@ -8,7 +8,7 @@ export default class EnigmaMachine {
 
     public constructor() {
         window.addEventListener('keypress', event => this.keypress(event));
-        window.addEventListener('keyup', event => this.keypress(event));
+        window.addEventListener('keyup', () => this.keyup());
     }
 
     public keypress(event) {

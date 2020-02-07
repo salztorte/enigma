@@ -29,6 +29,6 @@ export default class RollingMill {
     }
 
     public get displayedLetters() {
-        return this.rolls.map(it => intToChar(it.index));
+        return [...this.rolls].reverse().map(it => intToChar(it.index));
     }
 }
