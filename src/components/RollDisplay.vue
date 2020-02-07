@@ -1,38 +1,20 @@
 <template>
 <div class="roll-display">
-  <div class="roll-display__box">
-    {{ letter3 }}
-  </div>
-  <div class="roll-display__box">
-    {{ letter2 }}
-  </div>
-  <div class="roll-display__box">
-    {{ letter1 }}
+  <div class="roll-display__box" v-for="letter in letterBoxes">
+    {{ letter }}
   </div>
 </div>
 </template>
 
 <script lang="ts">
 
-import RollingMill from '@/modle/rollingMill';
+import RollingMill from '@/module/RollingMill';
 import {intToChar} from '@/util';
 import {Component, Prop, Vue} from 'vue-property-decorator';
 
 @Component
 export default class RollDisplay extends Vue {
-  @Prop({required: true}) private rollingMill!: RollingMill;
-
-  get letter1() {
-    return intToChar(this.rollingMill.roll1Index)
-  }
-
-  get letter2() {
-    return intToChar(this.rollingMill.roll2Index)
-  }
-
-  get letter3() {
-    return intToChar(this.rollingMill.roll3Index)
-  }
+  @Prop({required: true}) private letterBoxes!: string[];
 }
 </script>
 

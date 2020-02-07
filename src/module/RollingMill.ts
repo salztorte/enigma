@@ -1,3 +1,4 @@
+import {intToChar} from '@/util';
 import {roll_1, roll_2, roll_3, Roller, Stator, ukw_a} from './rolls';
 
 export default class RollingMill {
@@ -28,15 +29,8 @@ export default class RollingMill {
     return reverse3;
   }
 
-  get roll1Index(): number {
-    return this.roll1.index
-  }
 
-  get roll2Index(): number {
-    return this.roll2.index
-  }
-
-  get roll3Index(): number {
-    return this.roll3.index
+  get displayedLetters() {
+    return [intToChar(this.roll3.index), intToChar(this.roll2.index), intToChar(this.roll1.index)]
   }
 }

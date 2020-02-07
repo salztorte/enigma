@@ -1,6 +1,6 @@
 <template>
 <div class="key" v-bind:class="{ active: isActive }">
-  {{ name }}
+  {{ key }}
 </div>
 </template>
 
@@ -9,11 +9,15 @@ import {Component, Prop, Vue} from 'vue-property-decorator';
 
 @Component
 export default class Key extends Vue {
-  @Prop({required: true}) private name: string = '';
+  @Prop({required: true}) private name!: string;
   @Prop({required: true}) private currentKey: number = -1;
 
   get isActive() {
-    return this.name.toLowerCase().charCodeAt(0) - 97 === this.currentKey;
+    return this.key.toLowerCase().charCodeAt(0) - 97 === this.currentKey;
+  }
+
+  get key(): string {
+    return this.name
   }
 }
 </script>

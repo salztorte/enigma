@@ -1,18 +1,19 @@
 <template>
-  <div>
-      <h1>Enigma</h1>
+<div>
+  <h1>EnigmaMachine</h1>
 
-    <RollDisplay :rollingMill="rollingMill" class="roll-display" />
+  <RollDisplay :letter-boxes="displayedLetters" class="roll-display" />
 
-    <Keyboard :current-key="pressedKey"></Keyboard>
-  </div>
+  <Keyboard :current-key="pressedKey"></Keyboard>
+</div>
 </template>
 
 <script lang="ts">
 import Keyboard from '@/components/Keyboard.vue';
 import RollDisplay from '@/components/RollDisplay.vue';
-import RollingMill from '@/modle/rollingMill';
-import {Component, Vue} from 'vue-property-decorator';
+import EnigmaMachine from '@/module/EnigmaMachine';
+import RollingMill from '@/module/RollingMill';
+import {Component, Prop, Vue} from 'vue-property-decorator';
 
 
 @Component({
@@ -22,28 +23,20 @@ import {Component, Vue} from 'vue-property-decorator';
   }
 })
 export default class Enigma extends Vue {
-  private pressedKey: number  = -1;
-   private rollingMill: RollingMill = new RollingMill();
+  @Prop({required: true}) private machine!: EnigmaMachine;
 
-  created() {
-    window.addEventListener('keypress', this.keypress);
-    window.addEventListener('keyup', this.keyup);
+
+  get pressedKey(): number {
+    return this.machine.pressedKey;
   }
-
-
-  keypress(event) {
-    const keyValue = event.key.toLowerCase().charCodeAt(0) - 97;
-    this.pressedKey = this.rollingMill.pressKey(keyValue);
-  }
-
-  keyup() {
-    this.pressedKey = -1;
+  get displayedLetters(): string[] {
+    return this.machine.displayedLetters
   }
 }
 </script>
 
 <style scoped lang="stylus">
-.roll-display{
-  margin-bottom 30px;
-}
+  .roll-display {
+    margin-bottom 30px;
+  }
 </style>

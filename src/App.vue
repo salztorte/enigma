@@ -1,11 +1,14 @@
 <template>
 <div id="app">
-  <Enigma />
+  <Enigma :machine="machine"/>
 </div>
 </template>
 
 <script lang="ts">
 import Enigma from '@/components/Enigma.vue';
+import EnigmaMachine from '@/module/EnigmaMachine';
+import PlugBoard from '@/module/PlugBoard';
+import RollingMill from '@/module/RollingMill';
 import {Component, Vue} from 'vue-property-decorator';
 
 @Component({
@@ -14,6 +17,8 @@ import {Component, Vue} from 'vue-property-decorator';
   }
 })
 export default class App extends Vue {
+  private machine: EnigmaMachine = new EnigmaMachine();
+
 }
 </script>
 
