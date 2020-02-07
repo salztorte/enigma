@@ -12,7 +12,7 @@
 <script>
 import Keyboard from "./Keyboard";
 import RollDisplay from "./RollDisplay";
-import { RollingMill, roll_1 } from "../stuff/rolls";
+import { RollingMill, roll_1 } from "../modle/rolls";
 
 export default {
   name: "Enigma",
