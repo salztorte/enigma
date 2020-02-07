@@ -1,5 +1,5 @@
-import PlugBoard from '@/module/PlugBoard';
-import RollingMill from '@/module/RollingMill';
+import PlugBoard from "@/model/PlugBoard";
+import RollingMill from "@/model/RollingMill";
 
 export default class EnigmaMachine {
   private _pressedKey: number = -1;
@@ -7,10 +7,9 @@ export default class EnigmaMachine {
   public plugBoard: PlugBoard = new PlugBoard();
 
   constructor() {
-    window.addEventListener('keypress', (event) => this.keypress(event) );
-    window.addEventListener('keyup', (event) => this.keypress(event));
+    window.addEventListener("keypress", event => this.keypress(event));
+    window.addEventListener("keyup", event => this.keypress(event));
   }
-
 
   keypress(event) {
     const keyValue = event.key.toLowerCase().charCodeAt(0) - 97;
@@ -28,5 +27,4 @@ export default class EnigmaMachine {
   get displayedLetters(): string[] {
     return this.rollingMill.displayedLetters;
   }
-
 }

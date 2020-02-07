@@ -36,16 +36,16 @@
 </template>
 
 <script lang="ts">
-import Key from '@/components/Key.vue';
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import Key from "@/components/Key.vue";
+import { Component, Vue, Prop } from "vue-property-decorator";
 
 @Component({
   components: {
-    Key,
+    Key
   }
 })
 export default class Keyboard extends Vue {
-  @Prop({default: -1}) private currentKey: number = -1;
+  @Prop({ default: -1 }) private currentKey: number = -1;
 }
 </script>
 

@@ -1,14 +1,13 @@
-import {intToChar} from '@/util';
-import {roll_1, roll_2, roll_3, Roller, Stator, ukw_a} from './rolls';
+import { intToChar } from "@/util";
+import { roll_1, roll_2, roll_3, Roller, Stator, ukw_a } from "./rolls";
 
 export default class RollingMill {
-
-
-  constructor(private roll1: Roller = roll_1,
+  constructor(
+    private roll1: Roller = roll_1,
     private roll2: Roller = roll_2,
     private roll3: Roller = roll_3,
-    private ukw: Stator = ukw_a) {
-  }
+    private ukw: Stator = ukw_a
+  ) {}
 
   pressKey(key) {
     if (this.roll1.rotate()) {
@@ -29,8 +28,11 @@ export default class RollingMill {
     return reverse3;
   }
 
-
   get displayedLetters() {
-    return [intToChar(this.roll3.index), intToChar(this.roll2.index), intToChar(this.roll1.index)]
+    return [
+      intToChar(this.roll3.index),
+      intToChar(this.roll2.index),
+      intToChar(this.roll1.index)
+    ];
   }
 }

@@ -12,8 +12,9 @@ export class Stator {
   protected pattern: number[] = [];
 
   constructor(pattern: string) {
-    this.pattern = pattern.toLowerCase()
-      .split('')
+    this.pattern = pattern
+      .toLowerCase()
+      .split("")
       .map(it => this.charToInt(it));
   }
 
@@ -41,7 +42,7 @@ export class Roller extends Stator {
     const first = this.pattern.shift();
     this.pattern.push(first!);
 
-    return this.pattern[0] === this.transmissionPoint
+    return this.pattern[0] === this.transmissionPoint;
   }
 
   resultRevers(key: number): number {
@@ -54,12 +55,11 @@ export class Roller extends Stator {
   }
 }
 
-export const roll_1 = new Roller('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q');
-export const roll_2 = new Roller('AJDKSIRUXBLHWTMCQGZNPYFVOE', 'E');
-export const roll_3 = new Roller('BDFHJLCPRTXVZNYEIWGAKMUSQO', 'V');
-export const roll_4 = new Roller('ESOVPZJAYQUIRHXLNFTGKACMWB', 'J');
-export const roll_5 = new Roller('VZBRGITYUPSDNHLXAWMJQOFECK', 'Z');
-export const ukw_a = new Stator('EJMZALYXVBWFCRQUONTSPIKHGD');
-export const ukw_b = new Stator('YRUHQSLDPXNGOKMIEBFZCWVJAT');
-export const ukw_c = new Stator('FVPJIAOYEDRZXWGCTKUQSBNMHL');
-
+export const roll_1 = new Roller("EKMFLGDQVZNTOWYHXUSPAIBRCJ", "Q");
+export const roll_2 = new Roller("AJDKSIRUXBLHWTMCQGZNPYFVOE", "E");
+export const roll_3 = new Roller("BDFHJLCPRTXVZNYEIWGAKMUSQO", "V");
+export const roll_4 = new Roller("ESOVPZJAYQUIRHXLNFTGKACMWB", "J");
+export const roll_5 = new Roller("VZBRGITYUPSDNHLXAWMJQOFECK", "Z");
+export const ukw_a = new Stator("EJMZALYXVBWFCRQUONTSPIKHGD");
+export const ukw_b = new Stator("YRUHQSLDPXNGOKMIEBFZCWVJAT");
+export const ukw_c = new Stator("FVPJIAOYEDRZXWGCTKUQSBNMHL");
