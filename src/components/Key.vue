@@ -1,7 +1,7 @@
 <template>
-<div class="key" v-bind:class="{active: isActive}">
-  {{key}}
-</div>
+  <div class="key" v-bind:class="{ active: isActive }">
+    {{ key }}
+  </div>
 </template>
 
 <script>
@@ -13,8 +13,8 @@ export default {
       required: true
     },
     currentKey: {
-      type: String,
-      default: ''
+      type: Number,
+      default: -1
     }
   },
   computed: {
@@ -22,29 +22,28 @@ export default {
       return this.name;
     },
     isActive() {
-      return this.key.toUpperCase() === this.currentKey.toUpperCase();
+      return this.key.toLowerCase().charCodeAt(0) - 97 === this.currentKey;
     }
   }
 };
 </script>
 
 <style scoped lang="stylus">
-  .key {
-    background-color: lightgrey;
-    border-radius 50%
-    height: 40px
-    width: 40px
-    color: black;
-    font-size: 25px
-    font-weight bolder;
-    text-transform capitalize;
-    display: flex
-    justify-content: center
-    align-items: center;
-  }
+.key {
+  background-color: lightgrey;
+  border-radius 50%
+  height: 40px
+  width: 40px
+  color: black;
+  font-size: 25px
+  font-weight bolder;
+  text-transform capitalize;
+  display: flex
+  justify-content: center
+  align-items: center;
+}
 
-  .active {
-    background-color: yellow;
-  }
-
+.active {
+  background-color: yellow;
+}
 </style>

@@ -39,11 +39,13 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
-      "@vue/prettier"
+       "plugin:vue/essential",
+       "@vue/prettier"
     ],
     "rules": {
-      "no-console" : "warn"
+      "no-console" : "warn",
+      "no-unused-vars": "warn",
+      "vue/no-unused-components": "warn"
     },
     "parserOptions": {
       "parser": "babel-eslint"

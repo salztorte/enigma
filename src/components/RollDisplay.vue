@@ -1,51 +1,51 @@
 <template>
-<div class="roll-display">
-  <div class="roll-display__box">
-    {{letter3}}
+  <div class="roll-display">
+    <div class="roll-display__box">
+      {{ letter3 }}
+    </div>
+    <div class="roll-display__box">
+      {{ letter2 }}
+    </div>
+    <div class="roll-display__box">
+      {{ letter1 }}
+    </div>
   </div>
-  <div class="roll-display__box">
-    {{letter2}}
-  </div>
-  <div class="roll-display__box">
-    {{letter1}}
-  </div>
-</div>
 </template>
 
 <script>
 export default {
   name: "RollDisplay",
   props: {
-    indices: {
-      type: Array,
-      require: true,
+    rollingMill: {
+      type: Object,
+      require: true
     }
   },
   computed: {
     letter1() {
-      return this.indices[0].toChar()
+      return this.rollingMill.roll1.index.toChar()
     },
     letter2() {
-      return this.indices[1].toChar()
+      return this.rollingMill.roll2.index.toChar()
     },
     letter3() {
-      return this.indices[2].toChar()
-    },
+      return this.rollingMill.roll3.index.toChar()
+    }
   }
-}
+};
 </script>
 
 <style scoped lang="stylus">
-  .roll-display {
-    display: flex
+.roll-display {
+  display: flex
 
 
-    &__box {
-      height: 30px;
-      width: 30px;
-      box-sizing border-box
-      border 1px solid lightgrey;
-      font-size: 20px
-    }
+  &__box {
+    height: 30px;
+    width: 30px;
+    box-sizing border-box
+    border 1px solid lightgrey;
+    font-size: 20px
   }
+}
 </style>
