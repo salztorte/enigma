@@ -1,43 +1,45 @@
 <template>
   <div>
-    <GlobalEvents @keypress="keypress($event)" @keyup="keyup" />
-    <!--  <h1>Enigma</h1>-->
+      <h1>Enigma</h1>
 
-      <RollDisplay :rollingMill="rollingMill" class="roll-display"/>
+    <RollDisplay :rollingMill="rollingMill" class="roll-display" />
 
     <Keyboard :current-key="pressedKey"></Keyboard>
   </div>
 </template>
 
-<script>
-import Keyboard from "./Keyboard";
-import RollDisplay from "./RollDisplay";
-import { RollingMill, roll_1 } from "../modle/rolls";
+<script lang="ts">
+import Keyboard from '@/components/Keyboard.vue';
+import RollDisplay from '@/components/RollDisplay.vue';
+import RollingMill from '@/modle/rollingMill';
+import {Component, Vue} from 'vue-property-decorator';
 
-export default {
-  name: "Enigma",
+
+@Component({
   components: {
     Keyboard,
     RollDisplay
-  },
-  data() {
-    return {
-      pressedKey: -1,
-      test: 0,
-      rollingMill: new RollingMill(),
-      roll: roll_1
-    };
-  },
-  methods: {
-    keypress(event) {
-      const keyValue = event.key.toLowerCase().charCodeAt(0) - 97;
-      this.pressedKey = this.rollingMill.pressKey(keyValue);
-    },
-    keyup() {
-      this.pressedKey = -1;
-    }
   }
-};
+})
+export default class Enigma extends Vue {
+  private pressedKey: number  = -1;
+   private rollingMill: RollingMill = new RollingMill();
+
+  created() {
+    window.addEventListener('keypress', this.keypress);
+    window.addEventListener('keyup', this.keyup);
+  }
+
+
+  keypress(event) {
+    const keyValue = event.key.toLowerCase().charCodeAt(0) - 97;
+    this.pressedKey = this.rollingMill.pressKey(keyValue);
+  }
+
+  keyup() {
+    this.pressedKey = -1;
+  }
+}
 </script>
 
 <style scoped lang="stylus">

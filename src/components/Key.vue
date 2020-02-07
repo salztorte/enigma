@@ -1,49 +1,39 @@
 <template>
-  <div class="key" v-bind:class="{ active: isActive }">
-    {{ key }}
-  </div>
+<div class="key" v-bind:class="{ active: isActive }">
+  {{ name }}
+</div>
 </template>
 
-<script>
-export default {
-  name: "Key",
-  props: {
-    name: {
-      type: String,
-      required: true
-    },
-    currentKey: {
-      type: Number,
-      default: -1
-    }
-  },
-  computed: {
-    key() {
-      return this.name;
-    },
-    isActive() {
-      return this.key.toLowerCase().charCodeAt(0) - 97 === this.currentKey;
-    }
+<script lang="ts">
+import {Component, Prop, Vue} from 'vue-property-decorator';
+
+@Component
+export default class Key extends Vue {
+  @Prop({required: true}) private name: string = '';
+  @Prop({required: true}) private currentKey: number = -1;
+
+  get isActive() {
+    return this.name.toLowerCase().charCodeAt(0) - 97 === this.currentKey;
   }
-};
+}
 </script>
 
 <style scoped lang="stylus">
-.key {
-  background-color: lightgrey;
-  border-radius 50%
-  height: 60px
-  width: 60px
-  color: black;
-  font-size: 40px
-  font-weight bolder;
-  text-transform capitalize;
-  display: flex
-  justify-content: center
-  align-items: center;
-}
+  .key {
+    background-color: lightgrey;
+    border-radius 50%
+    height: 60px
+    width: 60px
+    color: black;
+    font-size: 40px
+    font-weight bolder;
+    text-transform capitalize;
+    display: flex
+    justify-content: center
+    align-items: center;
+  }
 
-.active {
-  background-color: yellow;
-}
+  .active {
+    background-color: yellow;
+  }
 </style>

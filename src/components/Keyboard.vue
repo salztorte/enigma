@@ -35,21 +35,18 @@
   </div>
 </template>
 
-<script>
-import Key from "./Key";
+<script lang="ts">
+import Key from '@/components/Key.vue';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 
-export default {
-  name: "Keyboard",
-  props: {
-    currentKey: {
-      type: Number,
-      default: -1
-    }
-  },
+@Component({
   components: {
-    Key
+    Key,
   }
-};
+})
+export default class Keyboard extends Vue {
+  @Prop({default: -1}) private currentKey: number = -1;
+}
 </script>
 
 <style scoped lang="stylus">

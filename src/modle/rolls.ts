@@ -9,54 +9,57 @@
 //UKW-C FVPJIAOYEDRZXWGCTKUQSBNMHL
 
 export class Stator {
-  _pattern = [];
+  protected pattern: number[] = [];
 
-  constructor(pattern) {
-    this._pattern = pattern
-      .toLowerCase()
-      .split("")
+  constructor(pattern: string) {
+    this.pattern = pattern.toLowerCase()
+      .split('')
       .map(it => this.charToInt(it));
   }
 
-  result(key) {
-    return this._pattern[key];
+  result(key: number): number {
+    return this.pattern[key];
   }
 
-  charToInt(char) {
+  protected charToInt(char: string): number {
     return char.toLowerCase().charCodeAt(0) - 97;
   }
 }
 
 export class Roller extends Stator {
-  transmissionPoint;
-  index = 0;
-  startPattern = this._pattern;
+  private readonly transmissionPoint: number;
+  public index: number = 0;
+  private startPattern: number[] = [...this.pattern];
 
-  constructor(pattern, transmissionPoint) {
+  constructor(pattern: string, transmissionPoint: string) {
     super(pattern);
     this.transmissionPoint = (this.charToInt(transmissionPoint) + 1) % 26;
   }
 
-  rotate() {
+  rotate(): boolean {
     this.index = (this.index + 1) % 26;
-    const first = this._pattern.shift();
-    this._pattern.push(first);
+    const first = this.pattern.shift();
+    this.pattern.push(first!);
 
-    return this._pattern[0] === this.transmissionPoint
+    return this.pattern[0] === this.transmissionPoint
   }
 
+  resultRevers(key: number): number {
+    return this.pattern.indexOf(key);
+  }
 
-  resultRevers(key) {
-    return this._pattern.indexOf(key);
+  reset() {
+    this.pattern = this.startPattern;
+    this.index = 0;
   }
 }
 
-export const roll_1 = new Roller("EKMFLGDQVZNTOWYHXUSPAIBRCJ", "Q");
-export const roll_2 = new Roller("AJDKSIRUXBLHWTMCQGZNPYFVOE", "E");
-export const roll_3 = new Roller("BDFHJLCPRTXVZNYEIWGAKMUSQO", "V");
-export const roll_4 = new Roller("ESOVPZJAYQUIRHXLNFTGKACMWB", "J");
-export const roll_5 = new Roller("VZBRGITYUPSDNHLXAWMJQOFECK", "Z");
-export const ukw_a = new Stator("EJMZALYXVBWFCRQUONTSPIKHGD");
-export const ukw_b = new Stator("YRUHQSLDPXNGOKMIEBFZCWVJAT");
-export const ukw_c = new Stator("FVPJIAOYEDRZXWGCTKUQSBNMHL");
+export const roll_1 = new Roller('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q');
+export const roll_2 = new Roller('AJDKSIRUXBLHWTMCQGZNPYFVOE', 'E');
+export const roll_3 = new Roller('BDFHJLCPRTXVZNYEIWGAKMUSQO', 'V');
+export const roll_4 = new Roller('ESOVPZJAYQUIRHXLNFTGKACMWB', 'J');
+export const roll_5 = new Roller('VZBRGITYUPSDNHLXAWMJQOFECK', 'Z');
+export const ukw_a = new Stator('EJMZALYXVBWFCRQUONTSPIKHGD');
+export const ukw_b = new Stator('YRUHQSLDPXNGOKMIEBFZCWVJAT');
+export const ukw_c = new Stator('FVPJIAOYEDRZXWGCTKUQSBNMHL');
 

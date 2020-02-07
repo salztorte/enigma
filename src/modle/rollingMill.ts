@@ -1,20 +1,17 @@
-import {roll_1, roll_2, roll_3, ukw_a} from "./rolls";
+import {roll_1, roll_2, roll_3, Roller, Stator, ukw_a} from './rolls';
 
 export default class RollingMill {
-  roll1;
-  roll2;
-  roll3;
 
-  constructor(roll1 = roll_1, roll2 = roll_2, roll3 = roll_3, ukw = ukw_a) {
-    this.roll1 = roll1;
-    this.roll2 = roll2;
-    this.roll3 = roll3;
-    this.ukw = ukw
+
+  constructor(private roll1: Roller = roll_1,
+    private roll2: Roller = roll_2,
+    private roll3: Roller = roll_3,
+    private ukw: Stator = ukw_a) {
   }
 
   pressKey(key) {
-    if(this.roll1.rotate()) {
-      if(this.roll2.rotate()) {
+    if (this.roll1.rotate()) {
+      if (this.roll2.rotate()) {
         this.roll2.rotate();
         this.roll3.rotate();
       }
@@ -29,5 +26,17 @@ export default class RollingMill {
     const reverse3 = this.roll1.resultRevers(reverse2);
 
     return reverse3;
+  }
+
+  get roll1Index(): number {
+    return this.roll1.index
+  }
+
+  get roll2Index(): number {
+    return this.roll2.index
+  }
+
+  get roll3Index(): number {
+    return this.roll3.index
   }
 }
