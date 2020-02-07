@@ -2,47 +2,33 @@ import { intToChar } from '@/util';
 import { roll1, roll2, roll3, Roller, Stator, ukwA } from './rolls';
 
 export default class RollingMill {
-    private roll1: Roller;
-    private roll2: Roller;
-    private roll3: Roller;
-    private ukw: Stator;
+    private rolls: Roller[] = [];
+    private stator: Stator;
 
-    public constructor(
-        r1: Roller = roll1,
-        r2: Roller = roll2,
-        r3: Roller = roll3,
-        ukw: Stator = ukwA
-    ) {
-        this.roll1 = r1;
-        this.roll2 = r2;
-        this.roll3 = r3;
-        this.ukw = ukw;
+    public constructor(rolls: Roller[] = [roll1, roll2, roll3], stator: Stator = ukwA) {
+        this.rolls = rolls;
+        this.stator = stator;
     }
 
     public pressKey(key) {
-        if (this.roll1.rotate()) {
-            if (this.roll2.rotate()) {
-                this.roll2.rotate();
-                this.roll3.rotate();
+        if (this.rolls[0].rotate()) {
+            if (this.rolls[1].rotate()) {
+                this.rolls[1].rotate();
+                this.rolls[2].rotate();
             }
         }
 
-        const forward1 = this.roll1.result(key);
-        const forward2 = this.roll2.result(forward1);
-        const forward3 = this.roll3.result(forward2);
-        const ukw = this.ukw.result(forward3);
-        const reverse1 = this.roll3.resultRevers(ukw);
-        const reverse2 = this.roll2.resultRevers(reverse1);
-        const reverse3 = this.roll1.resultRevers(reverse2);
-
-        return reverse3;
+        // TODO Besser auch über das Array um noch mehr Walzen zu zulassen
+        const forward1 = this.rolls[0].result(key);
+        const forward2 = this.rolls[1].result(forward1);
+        const forward3 = this.rolls[2].result(forward2);
+        const ukw = this.stator.result(forward3);
+        const reverse1 = this.rolls[2].resultRevers(ukw);
+        const reverse2 = this.rolls[1].resultRevers(reverse1);
+        return this.rolls[0].resultRevers(reverse2);
     }
 
     public get displayedLetters() {
-        return [
-            intToChar(this.roll3.index),
-            intToChar(this.roll2.index),
-            intToChar(this.roll1.index),
-        ];
+        return this.rolls.map(it => intToChar(it.index));
     }
 }

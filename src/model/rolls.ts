@@ -49,7 +49,7 @@ export class Roller extends Stator {
         return this.pattern.indexOf(key);
     }
 
-    public reset() {
+    public reset(): void {
         this.pattern = this.startPattern;
         this.index = 0;
     }
