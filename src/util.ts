@@ -1,2 +1,3 @@
-export const intToChar: (number) => string = int =>
-  String.fromCharCode(int + 97).toUpperCase();
+export function intToChar(int: number): string {
+    return String.fromCharCode(int + 97).toUpperCase();
+}
