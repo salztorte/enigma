@@ -41,11 +41,11 @@ export default {
 
 
   &__box {
-    height: 30px;
-    width: 30px;
+    height: 60px;
+    width: 60px;
     box-sizing border-box
     border 1px solid lightgrey;
-    font-size: 20px
+    font-size: 40px
   }
 }
 </style>

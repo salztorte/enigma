@@ -32,10 +32,10 @@ export default {
 .key {
   background-color: lightgrey;
   border-radius 50%
-  height: 40px
-  width: 40px
+  height: 60px
+  width: 60px
   color: black;
-  font-size: 25px
+  font-size: 40px
   font-weight bolder;
   text-transform capitalize;
   display: flex

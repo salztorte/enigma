@@ -56,15 +56,15 @@ export default {
 .keyboard {
   &__row {
     display flex;
-    margin-left -15px
-    margin-bottom:16px
+    margin-left -20px
+    margin-bottom:25px
 
     & * {
-      margin-left: 15px
+      margin-left: 20px
     }
 
     &--second {
-      margin-left 15px
+      margin-left 20px
     }
   }
 }
