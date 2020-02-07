@@ -37,12 +37,12 @@
 
 <script lang="ts">
 import Key from "@/components/Key.vue";
-import { Component, Vue, Prop } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({
-  components: {
-    Key
-  }
+    components: {
+        Key
+    }
 })
 export default class Keyboard extends Vue {
   @Prop({ default: -1 }) private currentKey: number = -1;
@@ -54,7 +54,7 @@ export default class Keyboard extends Vue {
   &__row {
     display flex;
     margin-left -20px
-    margin-bottom:25px
+    margin-bottom: 25px
 
     & * {
       margin-left: 20px

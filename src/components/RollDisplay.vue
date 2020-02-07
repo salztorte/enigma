@@ -1,9 +1,9 @@
 <template>
   <div class="roll-display">
     <div
-      class="roll-display__box"
       v-for="(letter, index) in letterBoxes"
       :key="index"
+      class="roll-display__box"
     >
       {{ letter }}
     </div>

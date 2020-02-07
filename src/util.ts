@@ -1,1 +1,2 @@
-export const intToChar = int => String.fromCharCode(int + 97).toUpperCase();
+export const intToChar: (number) => string = int =>
+  String.fromCharCode(int + 97).toUpperCase();

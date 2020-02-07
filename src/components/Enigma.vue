@@ -15,19 +15,20 @@ import EnigmaMachine from "@/model/EnigmaMachine";
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component({
-  components: {
-    Keyboard,
-    RollDisplay
-  }
+    components: {
+        Keyboard,
+        RollDisplay
+    }
 })
 export default class Enigma extends Vue {
   @Prop({ required: true }) private machine!: EnigmaMachine;
 
   get pressedKey(): number {
-    return this.machine.pressedKey;
+      return this.machine.pressedKey;
   }
+
   get displayedLetters(): string[] {
-    return this.machine.displayedLetters;
+      return this.machine.displayedLetters;
   }
 }
 </script>

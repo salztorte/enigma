@@ -10,12 +10,12 @@ import EnigmaMachine from "@/model/EnigmaMachine";
 import { Component, Vue } from "vue-property-decorator";
 
 @Component({
-  components: {
-    Enigma
-  }
+    components: {
+        Enigma
+    }
 })
 export default class App extends Vue {
-  private machine: EnigmaMachine = new EnigmaMachine();
+    private machine: EnigmaMachine = new EnigmaMachine();
 }
 </script>
 

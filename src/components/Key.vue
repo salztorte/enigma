@@ -1,5 +1,5 @@
 <template>
-  <div class="key" v-bind:class="{ active: isActive }">
+  <div class="key" :class="{ active: isActive }">
     {{ key }}
   </div>
 </template>
@@ -13,11 +13,11 @@ export default class Key extends Vue {
   @Prop({ required: true }) private currentKey: number = -1;
 
   get isActive() {
-    return this.key.toLowerCase().charCodeAt(0) - 97 === this.currentKey;
+      return this.key.toLowerCase().charCodeAt(0) - 97 === this.currentKey;
   }
 
   get key(): string {
-    return this.name;
+      return this.name;
   }
 }
 </script>
