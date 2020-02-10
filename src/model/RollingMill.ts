@@ -1,11 +1,17 @@
-import { intToChar } from '@/util';
-import { roll1, roll2, roll3, Roller, Stator, ukwA } from './rolls';
+import {intToChar} from '@/util';
+import {Roller, Stator} from './rolls';
+
+const defaultRoll1 = new Roller('abcdefghijklmnopqrstuvwxyz', 'z');
+const defaultRoll2 = new Roller('abcdefghijklmnopqrstuvwxyz', 'z');
+const defaultRoll3 = new Roller('abcdefghijklmnopqrstuvwxyz', 'z');
+const defaultUKW = new Stator('abcdefghijklmnopqrstuvwxyz');
+
 
 export default class RollingMill {
     private rolls: Roller[] = [];
     private stator: Stator;
 
-    public constructor(rolls: Roller[] = [roll1, roll2, roll3], stator: Stator = ukwA) {
+    public constructor(rolls: Roller[] = [defaultRoll1, defaultRoll2, defaultRoll3], stator: Stator = defaultUKW) {
         this.rolls = rolls;
         this.stator = stator;
     }

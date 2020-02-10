@@ -13,7 +13,10 @@ export default class EnigmaMachine {
 
     public keypress(event) {
         const keyValue = event.key.toLowerCase().charCodeAt(0) - 97;
-        this._pressedKey = this.rollingMill.pressKey(keyValue);
+
+        const plugBoardResult = this.plugBoard.forward(keyValue);
+        const rollResult = this.rollingMill.pressKey(plugBoardResult);
+        this._pressedKey = this.plugBoard.reverse(rollResult);
     }
 
     public keyup() {
