@@ -45,7 +45,7 @@ export class Roller extends Stator {
         return this.pattern[0] === this.transmissionPoint;
     }
 
-    public resultRevers(key: number): number {
+    public resultReverse(key: number): number {
         return this.pattern.indexOf(key);
     }
 
